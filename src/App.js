@@ -1,24 +1,32 @@
-import './App.css';
-import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
-import Home from './Home';
-import About from './About';
-import Nav from './Nav';
-import { UserContext } from './UserContext';
+import React from 'react'
+import SlideShow from './SlideShow'
 
-function App() {
+export default function App() {
+  const slides = [
+    {
+      url: "https://d-micheni.github.io/Gadget-Centre/assets/images/1a.jpg",
+      text: "1 / 3"
+    },
+    {
+      url:"https://d-micheni.github.io/Gadget-Centre/assets/images/2a.jpg",
+      text: "2 / 3"
+    },
+    {
+      url: "https://d-micheni.github.io/Gadget-Centre/assets/images/3a.jpg",
+      text: "3 / 3"
+    }
+  ]
+  const divStyles = {
+    width: "80%",
+    height: "700px",
+    margin: "0 auto"
+  }
+  
   return (
-    <Router>
-      <div className='App'>
-        <Nav/>
-        <Routes>
-          <UserContext.Provider value="hello from context">
-            <Route index element={<Home/>}/>
-            <Route path='about' element={<About/>}/>
-          </UserContext.Provider>
-        </Routes>
+    <div>
+      <div style={divStyles}>
+        <SlideShow slides={slides}/>
       </div>
-    </Router>
-  );
+    </div>
+  )
 }
-
-export default App;
